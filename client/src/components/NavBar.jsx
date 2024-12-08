@@ -30,7 +30,7 @@ const NavBar = () => {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       };
-      await axios.get("http://localhost:5000/logout", config);
+      await axios.get(`${SERVER}/logout`, config);
       setRefresh(true);
       novigate("/signin");
       window.location.reload();
