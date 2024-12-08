@@ -21,8 +21,8 @@ router.post("/signup", async (req, res) => {
         .cookie("token", token, {
           expires: new Date(Date.now() + 100000000),
           httpOnly: true,
-          secure: false,
-          // sameSite: "none",
+          secure: true,
+           sameSite: "none",
         })
         .json({
           success: true,
@@ -49,8 +49,8 @@ router.post("/signin", async (req, res) => {
     const options = {
       expires: new Date(Date.now() + 10000000),
       httpOnly: true,
-      secure: false,
-      // sameSite: "none",
+      secure: true,
+     sameSite: "none",
     };
     res.status(200).cookie("token", token, options).json({
       success: true,
@@ -70,8 +70,8 @@ router.get("/logout", isAuthenticated, async (req, res) => {
         .cookie("token", null, {
           expires: new Date(Date.now()),
           httpOnly: true,
-          secure: false,
-          // sameSite: "none",
+          secure: true,
+          sameSite: "none",
         })
         .json({
           success: true,
