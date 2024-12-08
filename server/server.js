@@ -11,7 +11,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URI,
+    origin:"https://registration-authclient.vercel.app",
     credentials: true,
   })
 );
