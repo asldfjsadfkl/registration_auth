@@ -68,7 +68,7 @@ const NavBar = () => {
             </li>
 
             <li className={auth ? "nav-item" : "d-none"}>
-              <NavLink className="nav-link" to="data">
+              <NavLink className="nav-link" to="/data">
                 Data
               </NavLink>
             </li>
