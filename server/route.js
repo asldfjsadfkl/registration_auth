@@ -22,7 +22,7 @@ router.post("/signup", async (req, res) => {
           expires: new Date(Date.now() + 100000000),
           httpOnly: true,
           secure: true,
-           sameSite: "none",
+          //  sameSite: "none",
         })
         .json({
           success: true,
@@ -50,7 +50,7 @@ router.post("/signin", async (req, res) => {
       expires: new Date(Date.now() + 10000000),
       httpOnly: true,
       secure: true,
-     sameSite: "none",
+    //  sameSite: "none",
     };
     res.status(200).cookie("token", token, options).json({
       success: true,
@@ -71,7 +71,7 @@ router.get("/logout", isAuthenticated, async (req, res) => {
           expires: new Date(Date.now()),
           httpOnly: true,
           secure: true,
-          sameSite: "none",
+          // sameSite: "none",
         })
         .json({
           success: true,

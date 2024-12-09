@@ -5,13 +5,15 @@ import bodyParser from "body-parser";
 import { conn } from "./Database/Db.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import listControle from "./ListControle.js";
 const app = express();
 
 dotenv.config();
 
 app.use(
   cors({
-    origin:"https://registration-authclient.vercel.app",
+    origin: "https://registration-authclient.vercel.app",
+    // origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -25,6 +27,7 @@ app.use(express.json());
 conn();
 // use router
 app.use(router);
+app.use("/list", listControle);
 
 const PORT = process.env.PORT || 5000;
 
