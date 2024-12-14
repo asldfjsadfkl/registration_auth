@@ -1,26 +1,20 @@
 import React from "react";
 import "../css/signup.css";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import axios from "axios";
+// import axios from "axios";
 import "../css/bootstrap.min.css";
 import "../css/bootstrap.css";
-import { SERVER } from "../server";
+import { useDispatch } from "react-redux";
+import { register } from "../React_Redux/Action";
+
 const Signup = () => {
-  const novigate = useNavigate();
+  const dispacth = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const form = Object.fromEntries(data);
-    try {
-      await axios.post(`${SERVER}/signup`, form, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
-      novigate("/");
-      window.location.reload();
-    } catch (error) {}
+    dispacth(register(form));
   };
 
   return (

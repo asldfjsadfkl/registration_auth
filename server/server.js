@@ -12,8 +12,8 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: "https://registration-authclient.vercel.app",
-    // origin: "http://localhost:3000",
+    // origin: "https://registration-authclient.vercel.app",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );

@@ -1,36 +1,21 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { SERVER } from "../server.js";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getLists, deleteOnelist } from "../React_Redux/Action.js";
 
 const Table = () => {
-  const [data, setData] = useState();
-  console.log(data);
-
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.list);
+  // console.log(status, data);
   React.useEffect(() => {
-    const data = async () => {
-      try {
-        const data = await axios.get(`${SERVER}/list/all`, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        });
-        setData(data?.data?.data);
-      } catch (error) {}
-    };
-    data();
-  }, []);
-
-  const deleteData = async (id) => {
-    await axios.delete(`${SERVER}/list/${id}`, {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
+    dispatch(getLists());
+  }, [dispatch]);
+  const deleteData = (id) => {
+    deleteOnelist(id);
   };
-  const editdata = async (id) => {
-    await axios.patch(`${SERVER}/list/${id}`, {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
-  };
+  ///// pending
+  // const editdata = async (id) => {
+  //   // editOnelist(id);
+  // };
   return (
     <div className="w-100 d-flex justify-content-center align-items-center">
       <div className="w-100 d-flex flex-column justify-content-center align-items-center">
